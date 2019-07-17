@@ -1,4 +1,5 @@
 import random
+import copy
 class MinesweeperTile():
     def __init__(self):
         self.covered = True
@@ -57,6 +58,7 @@ class MinesweeperGrid():
         return nearbymines
 
     def openTile(self,r,c):
+        self.backupGrid = copy.deepcopy(self.grid)
         if self.firstClick:
             self.firstClick = False
             self.setUpGame(r,c)
@@ -68,12 +70,14 @@ class MinesweeperGrid():
             for r1 in range(self.rows):
                 for c1 in range(self.cols):
                     self.grid[r1][c1].covered = False
+            return
         if self.grid[r][c].mineNeighbor == 0:
             for (row, column) in self.neighbors(r, c):
                 self.openTile(row,column)
 
 
     def flagTile(self,r,c):
+        self.backupGrid = copy.deepcopy(self.grid)
         if not self.grid[r][c].covered:
             return
         if self.grid[r][c].flagged:
@@ -91,6 +95,11 @@ class MinesweeperGrid():
                 for (row, column) in self.neighbors(r, c):
                     if not self.grid[row][column].flagged and self.grid[row][column].covered:
                         self.openTile(row, column)
+
+    def reverseStep(self):
+        self.grid = self.backupGrid
+        self.fail = False
+
 
 
 

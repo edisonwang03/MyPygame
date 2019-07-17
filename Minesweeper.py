@@ -72,6 +72,9 @@ while not done:
                 msg.flagTile(row,column)
             elif pygame.mouse.get_pressed() == (1, 0, 1):
                 msg.openAllNeighborTiles(row,column)
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_b:
+                msg.reverseStep()
 
     # Set the screen background
     screen.fill(RED)
