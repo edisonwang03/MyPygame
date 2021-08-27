@@ -1,15 +1,15 @@
 import pygame
-import MinesweeperClass
+from MinesweeperClass import MinesweeperGrid
 
-msg = MinesweeperClass.MinesweeperGrid(10,10,5)
-msg.setUpGame(1,1)
+msg = MinesweeperGrid(10,10,10)
+#msg.setUpGame(1,1)
 
 # This sets the WIDTH and HEIGHT of each grid location
 WIDTH = 20
 HEIGHT = 20
 MARGIN = 0
 
-# unecessary right now
+# unnecessary right now
 # mine = pygame.image.load('Minesweeper Images\\bomb.png')
 # mine = pygame.transform.scale(mine,(WIDTH,HEIGHT))
 

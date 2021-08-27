@@ -53,7 +53,7 @@ class MinesweeperGrid():
     def mineneighbors(self,r,c):
         nearbymines = 0
         for (row,column) in self.neighbors(r,c):
-            if not (self.grid[r][c] == False) and self.grid[row][column].mine == True:
+            if self.grid[row][column].mine:
                 nearbymines += 1
         return nearbymines
 
