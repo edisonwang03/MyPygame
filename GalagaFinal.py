@@ -11,6 +11,7 @@ surface = pygame.display.set_mode((screen_Width, screen_Height))
 black = 0, 0, 0
 
 
+
 # Classes for game objects
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y, width, height):
@@ -22,7 +23,7 @@ class Player(pygame.sprite.Sprite):
 
     # Moves the player left or right
     def move(self, direction):
-        if direction == "S":
+        if direction == "W":
             self.rect.x -= 8
         if direction == "E":
             self.rect.x += 8
@@ -127,7 +128,7 @@ while not done:
     # Update game objects
     # Allows player to hold keys to move left and right
     if pressedLeft and player.rect.x >= 8:
-        player.move("S")
+        player.move("W")
     if pressedRight and player.rect.x <= screen_Width - player.rect.width - 8:
         player.move("E")
 
